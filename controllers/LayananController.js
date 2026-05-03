@@ -33,7 +33,7 @@ export const updateLayanan = async (req, res) => {
     try {
         const { nama, deskripsi } = req.body;
         const data = await updateLayananServices({ id: req.params.id, nama, deskripsi });
-        return res.status(200).json({ status: true, message: "Success Create Layanan Data", data })
+        return res.status(200).json({ status: true, message: "Success Update Layanan Data", data })
     } catch (error) {
         return res.status(error.statusCode ?? 500).json({ status: false, message: error.message })
     }
@@ -41,7 +41,7 @@ export const updateLayanan = async (req, res) => {
 export const deleteLayanan = async (req, res) => {
     try {
         await deleteLayananServices(req.params.id);
-        return res.status(200).json({ status: true, message: "Success Berita Delete" })
+        return res.status(200).json({ status: true, message: "Success Layanan Delete" })
     } catch (error) {
         return res.status(error.statusCode ?? 500).json({ status: false, message: error.message })
     }
