@@ -11,7 +11,7 @@ export const getAllBerita = async (req, res) => {
 export const getDetailsData = async (req, res) => {
     try {
         const data = await getDetailBeritaServices(req.params.id);
-        return res.status(200).json({ status: true, message: "Success Detail Berita" })
+        return res.status(200).json({ status: true, message: "Success Detail Berita", data })
     } catch (error) {
         return res.status(error.statusCode ?? 500).json({ status: false, message: error.message })
     }
