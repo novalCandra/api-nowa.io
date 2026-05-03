@@ -1,0 +1,58 @@
+generator client {
+  provider = "prisma-client-js"
+  output   = "../generated/prisma"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model admin {
+  id         Int          @id @default(autoincrement())
+  email      String       @unique(map: "Admin_email_key")
+  name       String?
+  password   String
+  role       admin_role
+  berita     berita[]
+  layanan    layanan[]
+  portofolio portofolio[]
+}
+
+model berita {
+  id        Int       @id @default(autoincrement())
+  judul     String
+  deskripsi String    @db.VarChar(150)
+  imageUrl  String?
+  tanggal   DateTime? @default(now())
+  adminId   Int
+  admin     admin     @relation(fields: [adminId], references: [id], map: "Berita_adminId_fkey")
+
+  @@index([adminId], map: "Berita_adminId_fkey")
+}
+
+model layanan {
+  id        Int    @id @default(autoincrement())
+  nama      String
+  deskripsi String @db.VarChar(150)
+  adminId   Int
+  admin     admin  @relation(fields: [adminId], references: [id], map: "Layanan_adminId_fkey")
+
+  @@index([adminId], map: "Layanan_adminId_fkey")
+}
+
+model portofolio {
+  id              Int     @id @default(autoincrement())
+  nama            String
+  deskripsi       String  @db.VarChar(150)
+  imageUrl        String?
+  link_portofolio String?
+  adminId         Int
+  admin           admin   @relation(fields: [adminId], references: [id], map: "Portofolio_adminId_fkey")
+
+  @@index([adminId], map: "Portofolio_adminId_fkey")
+}
+
+enum admin_role {
+  admin
+}

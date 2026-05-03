@@ -1,0 +1,15 @@
+import express from "express"
+import { verifyToken } from "../middleware/verifyToken.js";
+import { AllPortofolio, createPortofolio, deletePortofolio, detailPortofolio, updatePortofolio } from "../controllers/PortofolioController.js";
+import { ValidasiMiddeleware } from "../middleware/ValidasiMiddleware.js";
+import { SchemaPortofolio } from "../utils/Schema.js";
+import { upload } from "../utils/multer.js";
+
+const PortofolioRouter = express.Router();
+
+PortofolioRouter.get("/portofolio", verifyToken, AllPortofolio)
+PortofolioRouter.get("/portofolio/:id", verifyToken, detailPortofolio)
+PortofolioRouter.post("/portofolio", verifyToken, upload.single("imageUrl"), ValidasiMiddeleware(SchemaPortofolio), createPortofolio)
+PortofolioRouter.put("/portofolio/:id", verifyToken, upload.single("imageUrl"), ValidasiMiddeleware(SchemaPortofolio), updatePortofolio)
+PortofolioRouter.delete("/portofolio/:id", verifyToken, deletePortofolio)
+export default PortofolioRouter;
