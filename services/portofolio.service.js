@@ -45,7 +45,7 @@ export const updatePortofolioServices = async ({ id, nama, deskripsi, link_porto
             id: Number(id)
         },
         data: {
-            nama, deskripsi, link_portofolio, ...adminId(imageUrl && { imageUrl })
+            nama, deskripsi, link_portofolio, adminId, ...(imageUrl && { imageUrl })
         },
         include: { admin: true }
     })

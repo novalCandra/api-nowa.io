@@ -1,5 +1,5 @@
 import { PrismaClient } from "../generated/prisma/index.js";
-import { createPortofolioServices, deletePortofolioServices, getAllPortofolioServices, getDetailPorfolioServices } from "../services/portofolio.service.js";
+import { createPortofolioServices, deletePortofolioServices, getAllPortofolioServices, getDetailPorfolioServices, updatePortofolioServices } from "../services/portofolio.service.js";
 const prisma = new PrismaClient();
 
 export const AllPortofolio = async (req, res) => {
@@ -36,8 +36,13 @@ export const createPortofolio = async (req, res) => {
 
 export const updatePortofolio = async (req, res) => {
     try {
+
+        const adminId = req.admin?.id;
+        if (!adminId) {
+            return res.status(401).json({ status: false, message: "Unauthorized" })
+        }
         const { nama, deskripsi, link_portofolio } = req.body;
-        const data = await updatePortofolio({ id: req.params.id, nama, deskripsi, tanggal, file: req.file })
+        const data = await updatePortofolioServices({ id: req.params.id, nama, deskripsi, adminId, file: req.file })
         return res.status(200).json({ status: true, message: "Success Update Portofolio", data })
     } catch (error) {
         return res.status(error.statusCode ?? 500).json({ status: false, message: error.message })
