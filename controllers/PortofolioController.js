@@ -37,7 +37,7 @@ export const createPortofolio = async (req, res) => {
 export const updatePortofolio = async (req, res) => {
     try {
         const { nama, deskripsi, link_portofolio } = req.body;
-        const data = await updatePortofolio({ id: req.params.id, nam, deskripsi, tanggal, file: req.file })
+        const data = await updatePortofolio({ id: req.params.id, nama, deskripsi, tanggal, file: req.file })
         return res.status(200).json({ status: true, message: "Success Update Portofolio", data })
     } catch (error) {
         return res.status(error.statusCode ?? 500).json({ status: false, message: error.message })
