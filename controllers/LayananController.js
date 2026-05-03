@@ -10,7 +10,7 @@ export const allGetLayanan = async (req, res) => {
 }
 export const layananDetail = async (req, res) => {
     try {
-        const data = await layananDetailServices(Request.params.id);
+        const data = await layananDetailServices(req.params.id);
         return res.status(200).json({ status: true, message: "Success Details Layanan", data })
     } catch (error) {
         return res.status(error.statusCode ?? 500).json({ status: false, message: error.message })

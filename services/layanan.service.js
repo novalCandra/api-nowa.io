@@ -8,7 +8,7 @@ export const AllgetLayananServices = async () => {
 
 export const layananDetailServices = async (id) => {
     const detailLayanan = await prisma.layanan.findUnique({
-        where: Number(id),
+        where: { id: Number(id) },
         include: { admin: true }
     });
 
