@@ -1,4 +1,3 @@
-import { PrismaClient } from "../generated/prisma/index.js";
 import { createPortofolioServices, deletePortofolioServices, getAllPortofolioServices, getDetailPorfolioServices, updatePortofolioServices } from "../services/portofolio.service.js";
 const prisma = new PrismaClient();
 
