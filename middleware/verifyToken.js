@@ -4,7 +4,6 @@ import { email } from "zod";
 
 export const verifyToken = async (req, res, next) => {
     const secretKey = process.env.SECRET_KEY_JWT;
-    console.log(process.env.SECRET_KEY_JWT);
     if (!secretKey) {
         return res.status(500).json({
             message: "JWT secret not configured"

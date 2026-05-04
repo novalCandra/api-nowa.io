@@ -1,8 +1,6 @@
 import { LoginSevices } from "../services/auth.service.js";
 export const ControllerLogin = async (req, res) => {
 
-    console.log(req.method)
-    console.log(req.url)
     try {
         const { email, password } = req.body;
         const { admin, token } = await LoginSevices({ email, password })
