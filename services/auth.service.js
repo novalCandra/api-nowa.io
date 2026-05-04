@@ -1,4 +1,4 @@
-import prisma from "../lib/Prisma.js";
+import prisma from "../lib/Prisma.ts";
 import jwt from "jsonwebtoken";
 import bcrypt from "bcrypt"
 export const LoginSevices = async ({ email, password }) => {
