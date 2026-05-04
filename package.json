@@ -2,32 +2,35 @@
   "name": "api-nowa",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "dist/index.js",
+  "type": "module",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "nodemon index.js",
     "build": "prisma generate && tsc",
+    "start": "node dist/index.js",
     "postinstall": "prisma generate"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "type": "module",
   "dependencies": {
-    "@faker-js/faker": "^10.4.0",
-    "@prisma/client": "^6.19.3",
-    "bcrypt": "^6.0.0",
-    "dotenv": "^17.4.2",
-    "express": "^5.2.1",
-    "jsonwebtoken": "^9.0.3",
-    "multer": "^2.1.1",
-    "nodemon": "^3.1.14",
+    "@faker-js/faker": "^9.0.0",
+    "@prisma/client": "^6.0.0",
+    "bcrypt": "^5.1.1",
+    "dotenv": "^16.4.5",
+    "express": "^4.19.2",
+    "jsonwebtoken": "^9.0.2",
+    "multer": "^1.4.5-lts.1",
     "path": "^0.12.7",
-    "typescript": "^6.0.3",
-    "zod": "^4.4.2"
+    "typescript": "^5.4.5",
+    "zod": "^3.23.8"
   },
   "devDependencies": {
-    "@types/node": "^25.6.0",
-    "prisma": "^6.19.3"
+    "@types/node": "^20.0.0",
+    "@types/express": "^4.17.21",
+    "@types/bcrypt": "^5.0.2",
+    "@types/jsonwebtoken": "^9.0.6",
+    "nodemon": "^3.1.0",
+    "prisma": "^6.0.0"
   }
 }
