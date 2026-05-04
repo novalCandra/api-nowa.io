@@ -1,6 +1,4 @@
 import { createPortofolioServices, deletePortofolioServices, getAllPortofolioServices, getDetailPorfolioServices, updatePortofolioServices } from "../services/portofolio.service.js";
-const prisma = new PrismaClient();
-
 export const AllPortofolio = async (req, res) => {
     try {
         const data = await getAllPortofolioServices();
