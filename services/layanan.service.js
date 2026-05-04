@@ -1,4 +1,4 @@
-import prisma from "../lib/Prisma.ts";
+import prisma from "../lib/prisma.ts";
 export const AllgetLayananServices = async () => {
     const layanan = await prisma.layanan.findMany({
         include: { admin: true }
