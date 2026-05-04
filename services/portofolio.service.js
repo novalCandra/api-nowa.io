@@ -1,4 +1,4 @@
-import prisma from "../lib/prisma.ts";
+import prisma from "../lib/prisma.js";
 export const getAllPortofolioServices = async () => {
     const portofolio = await prisma.portofolio.findMany({
         include: { admin: true }

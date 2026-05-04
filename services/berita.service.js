@@ -1,4 +1,4 @@
-import prisma from "../lib/prisma.ts"
+import prisma from "../lib/prisma.js"
 export const getAllBeritaServices = async () => {
     const berita = await prisma.berita.findMany({
         include: { admin: true }
