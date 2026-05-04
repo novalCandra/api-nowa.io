@@ -1,10 +1,15 @@
 import jwt from "jsonwebtoken";
-import { PrismaClient } from "@prisma/client";
+import prisma from "../lib/prisma.js";
 import { email } from "zod";
 
-const prisma = new PrismaClient();
 export const verifyToken = async (req, res, next) => {
     const secretKey = process.env.SECRET_KEY_JWT;
+    console.log(process.env.SECRET_KEY_JWT);
+    if (!secretKey) {
+        return res.status(500).json({
+            message: "JWT secret not configured"
+        });
+    }
     try {
         if (req?.headers.authorization?.startsWith("JWT ")) {
             const token = req.headers.authorization.split(" ")[1];
