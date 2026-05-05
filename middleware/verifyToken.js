@@ -10,7 +10,7 @@ export const verifyToken = async (req, res, next) => {
         });
     }
     try {
-        if (req?.headers.authorization?.startsWith("Bearer ")) {
+        if (req?.headers.authorization?.startsWith("JWT ")) {
             const token = req.headers.authorization.split(" ")[1];
             const decoded = jwt.verify(token, secretKey)
             const users = await prisma.admin.findUnique({
