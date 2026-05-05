@@ -9,7 +9,7 @@ const PortofolioRouter = express.Router();
 
 PortofolioRouter.get("/portofolio", AllPortofolio)
 PortofolioRouter.get("/portofolio/:id", detailPortofolio)
-PortofolioRouter.post("/portofolio", verifyToken, upload.single("imageUrl"), ValidasiMiddeleware(SchemaPortofolio), createPortofolio)
+PortofolioRouter.post("/portofolio", verifyToken, upload.single("imageUrl"), createPortofolio)
 PortofolioRouter.put("/portofolio/:id", verifyToken, upload.single("imageUrl"), ValidasiMiddeleware(SchemaPortofolio), updatePortofolio)
 PortofolioRouter.delete("/portofolio/:id", verifyToken, deletePortofolio)
 export default PortofolioRouter;

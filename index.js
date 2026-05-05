@@ -17,7 +17,7 @@ app.use(cors({
     origin: 'http://localhost:5173',
     credentials: true
 }))
-app.use("/public", express.static(path.join(__dirname, 'public')));
+app.use("/image", express.static(path.join(__dirname, 'image')));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.get("/", (req, res) => {
