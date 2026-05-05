@@ -23,7 +23,7 @@ export const getDetailPorfolioServices = async (id) => {
 export const createPortofolioServices = async ({ nama, deskripsi, link_portofolio, adminId, file }) => {
     let imageUrl;
     if (file) {
-        imageUrl = `/public/image/${file.filename}`
+        imageUrl = `/image/${file.filename}`
     }
     const createPortofolio = await prisma.portofolio.create({
         data: {
@@ -38,7 +38,7 @@ export const createPortofolioServices = async ({ nama, deskripsi, link_portofoli
 export const updatePortofolioServices = async ({ id, nama, deskripsi, link_portofolio, adminId, file }) => {
     let imageUrl;
     if (file) {
-        imageUrl = `/public/image/${file.filename}`
+        imageUrl = `/image/${file.filename} `
     }
     const updatePortofolio = await prisma.portofolio.update({
         where: {

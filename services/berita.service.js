@@ -22,7 +22,7 @@ export const getDetailBeritaServices = async (id) => {
 export const createBeritaServices = async ({ judul, deskripsi, tanggal, adminId, file }) => {
     let imageUrl;
     if (file) {
-        imageUrl = `/public/image/${file.filename}`
+        imageUrl = `/image/${file.filename}`
     }
     const berita = await prisma.berita.create({
         data: {
@@ -41,7 +41,7 @@ export const createBeritaServices = async ({ judul, deskripsi, tanggal, adminId,
 export const updateBeritaServices = async ({ id, judul, deskripsi, tanggal, adminId, file }) => {
     let imageUrl;
     if (file) {
-        imageUrl = `/public/image/${file.filename}`
+        imageUrl = `/image/${file.filename}`
     }
     const berita = await prisma.berita.update({
         where: {
