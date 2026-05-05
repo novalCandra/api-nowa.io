@@ -1,6 +1,5 @@
 import jwt from "jsonwebtoken";
 import prisma from "../lib/prisma.js";
-import { email } from "zod";
 
 export const verifyToken = async (req, res, next) => {
     const secretKey = process.env.SECRET_KEY_JWT;
@@ -8,6 +7,9 @@ export const verifyToken = async (req, res, next) => {
         return res.status(500).json({
             message: "JWT secret not configured"
         });
+    }
+    if (!req?.headers.authorization?.startsWith("JWT ")) {
+        return res.status(401).json({ status: false, message: "Unauthorized, no token" });
     }
     try {
         if (req?.headers.authorization?.startsWith("JWT ")) {

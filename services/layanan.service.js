@@ -21,7 +21,7 @@ export const layananDetailServices = async (id) => {
 }
 
 export const createLayananServices = async ({ nama, deskripsi, adminId }) => {
-    const createLayanan = await prisma.layanan.createMany({
+    const createLayanan = await prisma.layanan.create({
         data: {
             nama, deskripsi, adminId
         },
