@@ -8,7 +8,7 @@ import { upload } from "../utils/multer.js";
 const LayananRouter = express.Router();
 LayananRouter.get("/layanan", allGetLayanan)
 LayananRouter.get("/layanan/:id", layananDetail)
-LayananRouter.post("/layanan", verifyToken, upload.none(), ValidasiMiddeleware(SchemaLayanan), postLayanan)
+LayananRouter.post("/layanan", verifyToken, postLayanan)
 LayananRouter.put("/layanan/:id", verifyToken, upload.none(), ValidasiMiddeleware(SchemaLayanan), updateLayanan)
 LayananRouter.delete("/layanan/:id", verifyToken, deleteLayanan)
 export default LayananRouter;
