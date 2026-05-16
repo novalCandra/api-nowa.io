@@ -14,7 +14,10 @@ const __dirname = path.dirname(__filename);
 dotenv.config();
 
 app.use(cors({
-    origin: 'http://localhost:5173',
+    origin: [
+        'http://localhost:5173',
+        'https://cms-nowa.vercel.app',
+    ],
     credentials: true
 }))
 app.use("/image", express.static(path.join(__dirname, 'image')));
